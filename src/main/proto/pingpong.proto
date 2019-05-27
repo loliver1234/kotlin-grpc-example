@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "personal.kostera.kotlin.grpc.poc";
+option java_outer_classname = "PingPongProto";
+option objc_class_prefix = "PP";
+
+package poc;
+
+// The greeting service definition.
+service PingService {
+  // Sends a greeting
+  rpc Ping (PingRequest) returns (PingResponse) {}
+}
+
+// The request message containing the message.
+message PingRequest {
+  string message = 1;
+  int32 counter = 2;
+}
+
+// The response message containing the message
+message PingResponse {
+  string message = 1;
+}
