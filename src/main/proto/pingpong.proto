@@ -9,8 +9,14 @@ package poc;
 
 // The greeting service definition.
 service PingService {
-  // Sends a greeting
-  rpc Ping (PingRequest) returns (PingResponse) {}
+  // Sends a ping - simple RPC request - response
+  rpc Ping(PingRequest) returns (PingResponse) {}
+  // A server-side streaming RPC
+  rpc GetCharacters(StringRequest) returns (stream StringResponse) {}
+  // A client-side streaming RPC
+  rpc GetWord(stream StringRequest) returns (StringResponse) {}
+  // A bidirectional streaming RPC
+  rpc GetWordOrMore(stream StringRequest) returns (stream StringResponse) {}
 }
 
 // The request message containing the message.
@@ -21,5 +27,13 @@ message PingRequest {
 
 // The response message containing the message
 message PingResponse {
+  string message = 1;
+}
+
+message StringRequest {
+  string message = 1;
+}
+
+message StringResponse {
   string message = 1;
 }
